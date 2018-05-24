@@ -1,0 +1,5 @@
+**/target/*
+**/.*.un\~
+video-stream-collector/dependency-reduced-pom.xml
+video-stream-processor/dependency-reduced-pom.xml
+

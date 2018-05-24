@@ -93,7 +93,8 @@ public class VideoMotionDetector implements Serializable {
 					}
 					logger.warn("Motion detected for cameraId=" + eventData.getCameraId() + ", timestamp="+ eventData.getTimestamp());
 					//save image file
-					saveImage(copyFrame, eventData, outputDir);
+					// saveImage(copyFrame, eventData, outputDir);
+					VideoStreamProcessor.updateView(eventData, copyFrame);
 				}
 			  }
 				firstFrame = grayFrame;
@@ -103,7 +104,7 @@ public class VideoMotionDetector implements Serializable {
 		}
 	
 	//Get Mat from byte[]
-	private static Mat getMat(VideoEventData ed) throws Exception{
+	public static Mat getMat(VideoEventData ed) {
 		 Mat mat = new Mat(ed.getRows(), ed.getCols(), ed.getType());
 		 mat.put(0, 0, Base64.getDecoder().decode(ed.getData()));                                      
 		 return mat;
